@@ -2,10 +2,26 @@ Feature: Login
 
 Scenario: Successful Login with valid Credentials
          Given User Launch Chrome browser
-         When User opens URL "https://demo.guru99.com/v4/"
-         And User enters username as "mngr441730" and password as"EsErEsE"
+         When User opens URL "https://admin-demo.nopcommerce.com/login"
+         And User enters Email as "admin@yourstore.com" and Password as "admin"
          And Click on Login
-         Then Page Title should be"Guru99 Bank Manager HomePage"
+         Then Page Title should be "Dashboard / nopCommerce administration"
          When User click on Log out Link
-         Then Page Title should be"Welcome To The Online Banking Page of Guru99 Bank"
+         Then Page Title should be "Your store. Login"
          And close browser
+         
+ Scenario: Login Data Driven
+         Given User Launch Chrome browser
+         When User opens URL "https://admin-demo.nopcommerce.com/login"
+         And User enters Email as "<email>" and Password as "<password>"
+         And Click on Login
+         Then Page Title should be "Dashboard / nopCommerce administration"
+         When User click on Log out Link
+         Then Page Title should be "Your store. Login"
+         And close browser      
+         
+         Examples:
+         | email | password |
+         | admin@yourstore.com | admin |
+         | admin@yourstore.com | admin123 |
+         

@@ -16,32 +16,34 @@ public class LoginPage {
 	}
 	
 	
-	@FindBy(name="uid")
+	@FindBy(name="Email")
 	@CacheLookup
 	WebElement txtUserName;
 	
-	@FindBy (name="password")
+	@FindBy (name="Password")
 	@CacheLookup
 	WebElement txtPassword;
 	
-	@FindBy (name="btnLogin")
+	@FindBy (xpath="//button[text()='Log in']")
 	@CacheLookup
 	WebElement btnLogin;
 	
 
-	@FindBy(xpath="/html/body/div[3]/div/ul/li[15]/a")
+	@FindBy(xpath="//a[text()='Logout']")
 	@CacheLookup
 	WebElement lnkLogout;
 
 	public void setUserName (String uname) 
 	{
-	txtUserName.sendKeys(uname);
+		txtUserName.clear();
+		txtUserName.sendKeys(uname);
 	}
 	public void setPassword(String pwd)
 	{
+		txtPassword.clear();
 		txtPassword.sendKeys(pwd);
 	}
-	public void clickSubmit()
+	public void clickLogin()
 	{
 		btnLogin.click();
 	}
